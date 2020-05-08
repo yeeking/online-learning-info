@@ -60,13 +60,13 @@ Do this:
 
 Now when you record, you will get an uncompressed audio track on your file. You will also notice that the video extension changes to mkv, for the mastroska container. 
 
-Now you can extrac the pure audio track like this, assuming you have a video file called 
+Now you can extract the pure audio track like this, assuming you have a video file called uncomp_audio_video.mkv:
 
 ```
    ffmpeg -i uncomp_audio_video.mkv -c copy uncomp_audio.wav
 ```
 
-Do your work on uncomp.wav, save it as uncomp_audio_new.wav, replace the audio on the video like this:
+Do your work on uncomp_audio.wav, save it as uncomp_audio_new.wav. Now you can replace the audio on the video like this:
 
 ```
     ffmpeg -i uncomp_audio_video.mkv -i uncomp_audio_new.wav -c:v copy -c:a copy  -map 0:v:0 -map 1:a:0 uncomp_audio_video_new.mkv
